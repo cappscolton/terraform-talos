@@ -2,3 +2,4 @@ _cfgs/
 templates/controlplane.yaml
 *.json
 talosctl*
+images/*.raw

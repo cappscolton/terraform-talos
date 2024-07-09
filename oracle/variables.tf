@@ -4,7 +4,7 @@ variable "tenancy_ocid" {}
 variable "user_ocid" {}
 variable "fingerprint" {}
 variable "key_file" {
-  default = "~/.oci/oci_main_terraform.pem"
+  default = "~/.oci/oci_api_key.pem"
 }
 
 variable "project" {
@@ -15,7 +15,7 @@ variable "project" {
 variable "region" {
   description = "the OCI region where resources will be created"
   type        = string
-  default     = null
+  default     = "us-chicago-1"
 }
 
 variable "tags" {
@@ -86,15 +86,35 @@ variable "instances" {
   description = "Map of region's properties"
   type        = map(any)
   default = {
-    "jNdv:eu-amsterdam-1-AD-1" = {
+    "XFCe:US-CHICAGO-1-AD-1" = {
       web_count             = 0,
-      web_instance_shape    = "VM.Standard.E2.1.Micro",
+      web_instance_shape    = "VM.Standard.A1.Flex",
       web_instance_ocpus    = 1,
       web_instance_memgb    = 1,
       worker_count          = 0,
-      worker_instance_shape = "VM.Standard.E2.1.Micro",
+      worker_instance_shape = "VM.Standard.A1.Flex",
       worker_instance_ocpus = 1,
       worker_instance_memgb = 1,
     },
+    "XFCe:US-CHICAGO-1-AD-2" = {
+      web_count             = 0,
+      web_instance_shape    = "VM.Standard.A1.Flex",
+      web_instance_ocpus    = 1,
+      web_instance_memgb    = 1,
+      worker_count          = 0,
+      worker_instance_shape = "VM.Standard.A1.Flex",
+      worker_instance_ocpus = 1,
+      worker_instance_memgb = 1,
+    },
+    "XFCe:US-CHICAGO-1-AD-3" = {
+      web_count             = 0,
+      web_instance_shape    = "VM.Standard.A1.Flex",
+      web_instance_ocpus    = 1,
+      web_instance_memgb    = 1,
+      worker_count          = 0,
+      worker_instance_shape = "VM.Standard.A1.Flex",
+      worker_instance_ocpus = 1,
+      worker_instance_memgb = 1,
+    }
   }
 }

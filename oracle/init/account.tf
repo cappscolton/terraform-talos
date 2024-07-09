@@ -22,6 +22,7 @@ resource "oci_identity_user" "terraform" {
   name           = "terraform"
   description    = "user created by terraform for terraform"
   compartment_id = var.tenancy_ocid
+  email          = "dev@coltoncapps.com"
 }
 
 resource "oci_identity_user_group_membership" "terraform" {

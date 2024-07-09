@@ -8,10 +8,12 @@ About image_metadata.json https://www.oracle.com/docs/tech/oracle-private-cloud-
 ```
 
 ```shell
-wget https://github.com/siderolabs/talos/releases/download/v1.3.4/oracle-amd64.qcow2.xz
-wget https://github.com/siderolabs/talos/releases/download/v1.3.4/oracle-arm64.qcow2.xz
-xz -d oracle-amd64.qcow2.xz
-xz -d oracle-arm64.qcow2.xz
+wget https://factory.talos.dev/image/4a0d65c669d46663f377e7161e50cfd570c401f26fd9e7bda34a0216b6f1922b/v1.7.5/oracle-arm64.raw.xz
+https://factory.talos.dev/image/4a0d65c669d46663f377e7161e50cfd570c401f26fd9e7bda34a0216b6f1922b/v1.7.5/oracle-amd64.raw.xz
+xz -d oracle-amd64.raw.xz
+xz -d oracle-arm64.raw.xz
+qemu-img convert -f raw -O qcow2 oracle-arm64.raw oracle-arm64.qcow2
+qemu-img convert -f raw -O qcow2 oracle-amd64.raw oracle-amd64.qcow2
 
 cp image_metadata_amd64.json image_metadata.json
 tar zcf oracle-amd64.oci oracle-amd64.qcow2 image_metadata.json

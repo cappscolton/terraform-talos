@@ -42,7 +42,7 @@ resource "oci_core_instance_configuration" "worker" {
       preferred_maintenance_action        = "LIVE_MIGRATE"
       launch_mode                         = "PARAVIRTUALIZED"
 
-      shape = lookup(var.instances[each.key], "worker_instance_shape", "VM.Standard.E2.1.Micro")
+      shape = lookup(var.instances[each.key], "worker_instance_shape", "VM.Standard.A1.Flex")
       shape_config {
         ocpus         = lookup(var.instances[each.key], "worker_instance_ocpus", 1)
         memory_in_gbs = lookup(var.instances[each.key], "worker_instance_memgb", 1)
@@ -61,8 +61,8 @@ resource "oci_core_instance_configuration" "worker" {
 
       source_details {
         source_type             = "image"
-        image_id                = data.oci_core_images.talos_x64.images[0].id
-        boot_volume_size_in_gbs = "50"
+        image_id                = data.oci_core_images.talos_arm.images[0].id
+        # boot_volume_size_in_gbs = "50"
       }
       create_vnic_details {
         display_name              = "${var.project}-worker"

@@ -1,5 +1,5 @@
 
-ENDPOINT:=${shell terraform output -raw controlplane_endpoint 2>/dev/null}
+ENDPOINT := cluster.coltoncapps.com
 ifeq ($(ENDPOINT),)
 ENDPOINT := 127.0.0.1
 endif
@@ -36,6 +36,10 @@ create-templates:
 	@yq eval '.cluster.ca.crt' _cfgs/controlplane.yaml            | awk '{ print "ca: "$$1}'           >> _cfgs/tfstate.vars
 
 	@yq eval -o=json '{"kubernetes": .}' _cfgs/tfstate.vars > terraform.tfvars.json
+
+config-talosctl:
+	talosctl --talosconfig _cfgs/talosconfig config endpoint ${ENDPOINT}
+	talosctl --talosconfig _cfgs/talosconfig config node 172.16.1.11
 
 create-controlplane-bootstrap:
 	talosctl --talosconfig _cfgs/talosconfig config endpoint ${ENDPOINT}

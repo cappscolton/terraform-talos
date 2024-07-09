@@ -26,7 +26,7 @@ resource "oci_core_instance" "contolplane" {
   availability_domain = local.zones[count.index % local.zone_count]
   fault_domain        = element(data.oci_identity_fault_domains.domains[element(local.zones, count.index)].fault_domains, floor(count.index / local.zone_count)).name
 
-  shape = lookup(var.controlplane, "type", "VM.Standard.E4.Flex")
+  shape = lookup(var.controlplane, "type", "VM.Standard.A1.Flex")
   shape_config {
     ocpus         = lookup(var.controlplane, "ocpus", 1)
     memory_in_gbs = lookup(var.controlplane, "memgb", 3)
@@ -47,8 +47,8 @@ resource "oci_core_instance" "contolplane" {
 
   source_details {
     source_type             = "image"
-    source_id               = lookup(var.controlplane, "type", "VM.Standard.E4.Flex") == "VM.Standard.A1.Flex" ? data.oci_core_images.talos_arm.images[0].id : data.oci_core_images.talos_x64.images[0].id
-    boot_volume_size_in_gbs = "50"
+    source_id               = lookup(var.controlplane, "type", "VM.Standard.A1.Flex") == "VM.Standard.A1.Flex" ? data.oci_core_images.talos_arm.images[0].id : data.oci_core_images.talos_arm.images[0].id
+    # boot_volume_size_in_gbs = "50"
   }
   create_vnic_details {
     assign_public_ip = true

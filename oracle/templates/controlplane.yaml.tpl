@@ -7,6 +7,7 @@ machine:
     - ${lbv4}
     - ${lbv4_local}
     - ${apiDomain}
+    - cluster.coltoncapps.com
   features:
     kubernetesTalosAPIAccess:
       enabled: true
@@ -74,6 +75,7 @@ cluster:
       - ${lbv4}
       - ${lbv4_local}
       - ${apiDomain}
+      - cluster.coltoncapps.com
     admissionControl:
       - name: PodSecurity
         configuration:
