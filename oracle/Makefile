@@ -17,7 +17,7 @@ create-lb: ## Create loadbalancer
 	terraform apply -auto-approve -target=oci_network_load_balancer_network_load_balancer.web
 
 create-config: ## Genereate talos configs
-	talosctl gen config --output-dir _cfgs --with-docs=false --with-examples=false --with-secrets secrets.yaml --config-patch-control-plane @patches/tailscale.patch.yaml talos-k8s-oracle https://${ENDPOINT}:6443
+	talosctl gen config --output-dir _cfgs --with-docs=false --with-examples=false --with-secrets secrets.yaml talos-k8s-oracle https://${ENDPOINT}:6443
 	talosctl --talosconfig _cfgs/talosconfig config endpoint ${ENDPOINT}
 
 create-templates:

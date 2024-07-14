@@ -157,7 +157,7 @@ data:
   enable-host-firewall: "true"
   # List of devices used to attach bpf_host.o (implements BPF NodePort,
   # host-firewall and BPF masquerading)
-  devices: "tailscale0"
+  devices: "tailscale0 eth0 eth+"
 
   kube-proxy-replacement: "strict"
   kube-proxy-replacement-healthz-bind-address: ""
@@ -1062,7 +1062,7 @@ spec:
     metadata:
       annotations:
         # ensure pods roll when configmap updates
-        cilium.io/cilium-configmap-checksum: "cb877ec66b423856e3d45343a9ce32b8d838668715181114dff50baa49de2a05"
+        cilium.io/cilium-configmap-checksum: "16f48669542dc603fe49115ddaecf6a20740a99a8e2521f9590ea33f31d38753"
       labels:
         io.cilium/app: operator
         name: cilium-operator
