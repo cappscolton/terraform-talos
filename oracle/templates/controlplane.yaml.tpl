@@ -67,7 +67,7 @@ cluster:
     cni:
       name: custom
       urls:
-        - https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/canal.yaml
+        - https://raw.githubusercontent.com/cappscolton/terraform-talos/main/oracle/deployments/cilium-result.yaml
   proxy:
     disabled: true
   apiServer:
