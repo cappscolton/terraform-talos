@@ -67,7 +67,7 @@ cluster:
     cni:
       name: custom
       urls:
-        - https://raw.githubusercontent.com/sergelogvinov/terraform-talos/main/oracle/deployments/cilium-result.yaml
+        - https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/canal.yaml
   proxy:
     disabled: true
   apiServer:
@@ -122,6 +122,7 @@ cluster:
   externalCloudProvider:
     enabled: true
     manifests:
+      - https://raw.githubusercontent.com/cappscolton/terraform-talos/main/oracle/deployments/cilium-result.yaml
       - https://raw.githubusercontent.com/siderolabs/talos-cloud-controller-manager/main/docs/deploy/cloud-controller-manager.yml
       - https://raw.githubusercontent.com/sergelogvinov/terraform-talos/main/oracle/deployments/oci-cloud-controller-manager.yaml
       - https://raw.githubusercontent.com/sergelogvinov/terraform-talos/main/oracle/deployments/kubelet-serving-cert-approver.yaml

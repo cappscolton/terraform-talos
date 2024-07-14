@@ -4,3 +4,4 @@ templates/controlplane.yaml
 talosctl*
 images/*.raw
 secrets.yaml
+patches/
