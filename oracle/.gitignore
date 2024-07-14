@@ -3,3 +3,4 @@ templates/controlplane.yaml
 *.json
 talosctl*
 images/*.raw
+secrets.yaml
